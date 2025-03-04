@@ -98,12 +98,12 @@ def run_query(query, variables):
 def get_locations():
     event_id = get_event_id(TOURNAMENT_SLUG)
     all_players = get_players_from_event(event_id)
-    locations = []
+    locations = set()
     for player in all_players:
         city = player['city']
         state = player['state']
         if city and state:
-            locations.append(f'{city}, {state}')
+            locations.add(f'{city}, {state}')
     return locations
 
 
