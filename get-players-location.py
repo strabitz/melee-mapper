@@ -78,11 +78,14 @@ def get_players_from_event(event_id):
             for participant in entrant["participants"]:
                 user = participant.get("user")
                 if user:
-                    players.append({
-                        "name": user["name"],
-                        "city": user["location"].get("city"),
-                        "state": user["location"].get("state")
-                    })
+                    try:
+                        players.append({
+                            "name": user["name"],
+                            "city": user["location"].get("city"),
+                            "state": user["location"].get("state")
+                        })
+                    except:
+                        pass
         
         page += 1
     
